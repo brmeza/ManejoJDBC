@@ -73,11 +73,38 @@ public class UsuarioDao {
 
 
     //Update
-    public int update(Persona persona){
-        return 1;
+    public int update(Usuario usuario){
+        Connection conn = null;
+        PreparedStatement pst = null;
+        int cambios=0;
+        try {
+            conn = Conexion.getConnection();
+            pst = conn.prepareStatement(SQL_UPDATE);
+            pst.setString(1,usuario.getUsuario());
+            pst.setString(2,usuario.getPassword());
+            pst.setInt(3,usuario.getIdUsuario());
+            pst.executeUpdate();
+            cambios++;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cambios;
     }
 
 
+    public void delete(Usuario usuario){
+        Connection conn = null;
+        PreparedStatement pst = null;
+        try {
+            conn = Conexion.getConnection();
+            pst = conn.prepareStatement(SQL_DELETE);
+            pst.setInt(1,usuario.getIdUsuario());
+            pst.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace(System.out);
+        }
+
+    }
     //Delete
 
 }

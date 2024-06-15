@@ -5,7 +5,7 @@ import domain.Persona;
 
 import java.util.List;
 
-public class main {
+public class testPersona {
 
     public static void main(String[] args) {
 
@@ -18,7 +18,7 @@ public class main {
         //Insertando un nue3vo objeto de tipo persona
 
         Persona nuevaPersona = new Persona(1,"cogenwe ","Ment","ment@gmail.com","3211233221");
-        int personaEliminda = 4;
+        int personaEliminda = 5;
         personaDAO.delete(personaEliminda);
 
         personaList.forEach(Persona->{
